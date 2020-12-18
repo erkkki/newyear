@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="center">
+    <p *ngIf="!edit" class="message">
+      {{message.message}}
+    </p>
+    <p *ngIf="edit" class="message">
+      <label>
+        <textarea type="text"
+                  [(ngModel)]="message.message"
+                  class="editable"
+                  (ngModelChange)="updateMessage()">
+        </textarea>
+      </label>
+    </p>
+  </div>
+</div>

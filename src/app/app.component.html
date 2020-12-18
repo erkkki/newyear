@@ -1,0 +1,12 @@
+<div class="debuginfo">
+  <p>
+    {{messageService.getMessage() |async |json}}
+  </p>
+
+</div>
+
+<router-outlet>
+  <app-background></app-background>
+  <app-message></app-message>
+  <app-settings></app-settings>
+</router-outlet>
