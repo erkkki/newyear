@@ -4,8 +4,8 @@
 <app-message [edit]="editState"></app-message>
 <app-settings *ngIf="editState"></app-settings>
 <div class="buttons">
-  <button *ngIf="!editState" mat-fab color="primary" (click)="editState = !editState"><mat-icon>create</mat-icon></button>
-  <button *ngIf="editState" mat-fab color="warn" (click)="editState = !editState"><mat-icon>create</mat-icon></button>
+  <button *ngIf="!editState" mat-fab color="primary" (click)="editState = !editState" aria-label="create"><mat-icon>create</mat-icon></button>
+  <button *ngIf="editState" mat-fab color="warn" (click)="editState = !editState"  aria-label="create"><mat-icon>create</mat-icon></button>
 </div>
 <!--TODO show color picker when editing? Font selector?-->
 
