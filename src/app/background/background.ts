@@ -1,10 +1,10 @@
-import { Canvas } from './canvas';
-import { Firework } from './firework';
+import {Canvas} from './canvas';
+import {Firework} from './fireworks/firework';
 
 export class Background {
 
   private fireworks: Firework[] = [];
-  updateIntervalMs: number = 4;
+  updateIntervalMs = 4;
   fireworkCount = 40;
 
   constructor(private canvas: Canvas) {
@@ -12,7 +12,7 @@ export class Background {
     [...Array(this.fireworkCount)].forEach(() => {
       this.fireworks.push(
         new Firework(this.canvas)
-      )
+      );
     });
   }
 
@@ -21,7 +21,7 @@ export class Background {
    * Update all objects 240 times in second.
    * Draw loop to draw when browser is ready.
    */
-  run():void {
+  run(): void {
     this.update();
     this.draw();
   }

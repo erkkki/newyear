@@ -1,14 +1,14 @@
-import { Canvas } from './canvas';
-import { Firework } from "./firework";
+import {Canvas} from '../canvas';
+import {Firework} from './firework';
 
-import { Color } from '../core/types/background.interface';
+import {Color} from '../../core/types/background.interface';
 
 export class Spark {
 
-  direction: {vx: number, vy: number} = {vx: 0,vy: 0};
-  age: number = 0;
+  direction: {vx: number, vy: number} = {vx: 0, vy: 0};
+  age = 0;
   weight: number = Math.random() * 0.1 + .01;
-  max_age: number = 240;
+  maxAge = 240;
 
   constructor(
     private canvas: Canvas,
@@ -23,18 +23,18 @@ export class Spark {
    * @private
    */
   private randomDirection(): {vx: number, vy: number} {
-    let direction = {
+    const direction = {
       vx: Math.random(),
       vy: Math.random(),
     };
 
-    if(Math.random() > .5) direction.vx = - direction.vx;
-    if(Math.random() > .5) direction.vy = - direction.vy;
+    if (Math.random() > .5) { direction.vx = - direction.vx; }
+    if (Math.random() > .5) { direction.vy = - direction.vy; }
 
     return direction;
   }
 
-  update():void {
+  update(): void {
     this.age++;
   }
 
@@ -48,6 +48,6 @@ export class Spark {
     x = Math.floor(x);
     y = Math.floor(y);
 
-    this.canvas.drawRect(x, y, 4,4, this.color);
+    this.canvas.drawRect(x, y, 4, 4, this.color);
   }
 }

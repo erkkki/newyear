@@ -1,20 +1,30 @@
-.container {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-}
-.center {
-  position: relative;
-  left: -50%;
-}
 .message {
-  background-color: rgba(34, 34, 34, 0.4);
-
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 10px;
 }
 
-.editable {
-  font-size: 4rem;
-  border:none;
-  outline:none;
-  background:transparent;
+h1 {
+  color: white;
+  font-size: 2em;
+  line-height: 1.2;
+}
+
+textarea {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  overflow: hidden;
+
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 0;
+  margin-bottom: 16px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  width: 100%;
+  color: white;
+  font-size: 2em;
+  line-height: 1.2;
 }

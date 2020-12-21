@@ -1,23 +1,22 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
+import {async, TestBed} from '@angular/core/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {Router} from '@angular/router';
+
+import {AppComponent} from './app.component';
 import {BackgroundComponent} from './background/background.component';
 import {MessageComponent} from './message/message.component';
-import {YouTubePlayer, YouTubePlayerModule} from '@angular/youtube-player';
+import {MockRouter} from './mock/mock-router';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientModule
-      ],
+      imports: [ HttpClientModule ],
       declarations: [
         AppComponent,
         BackgroundComponent,
         MessageComponent,
       ],
+      providers: [{ provide: Router, useClass: MockRouter }],
     }).compileComponents();
   }));
 

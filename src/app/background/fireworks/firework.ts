@@ -1,13 +1,13 @@
-import { Canvas } from './canvas';
-import { Spark } from './spark';
+import {Canvas} from '../canvas';
+import {Spark} from './spark';
 
 export class Firework {
 
   position: { x: number, y: number} = { x: 100, y: 100};
-  age: number = 0;
-  max_age: number = 480;
-  explode_state: boolean = false;
-  explode_height: number = 0;
+  age = 0;
+  maxAge = 480;
+  explodeState = false;
+  explodeHeight = 0;
   sparks: Spark[] = [];
   sparkCount = 40;
 
@@ -17,28 +17,28 @@ export class Firework {
     this.age -= Math.floor(Math.random() * 200);
   }
 
-  reset():void {
+  reset(): void {
     this.position.y = this.canvas.getHeight();
     this.position.x = Math.floor(Math.random() * this.canvas.getWidth());
     this.age = 0;
-    this.explode_state = false;
+    this.explodeState = false;
     /** Random explode position between 60%-95% of canvas height. */
-    this.explode_height = this.canvas.getHeight() - Math.floor((Math.random() * (0.95 - 0.6) + 0.6) * this.canvas.getHeight());
+    this.explodeHeight = this.canvas.getHeight() - Math.floor((Math.random() * (0.95 - 0.6) + 0.6) * this.canvas.getHeight());
   }
 
   private generateSparks(): Spark[] {
-    let sparks = [];
-    let color = Canvas.randomColor();
+    const sparks = [];
+    const color = Canvas.randomColor();
     [...Array(this.sparkCount)].forEach(() => {
       sparks.push(
-        new Spark(this.canvas,this,color)
+        new Spark(this.canvas, this, color)
       );
     });
     return sparks;
   }
 
-  update():void {
-    switch (this.explode_state) {
+  update(): void {
+    switch (this.explodeState) {
       case true: {
         /** Update sparks */
         this.sparks.forEach((spark) => {
@@ -46,21 +46,21 @@ export class Firework {
         });
         /** Check if sparks are done */
         this.sparks = this.sparks.filter((spark) => {
-          return spark.age < spark.max_age;
-        })
+          return spark.age < spark.maxAge;
+        });
 
         /** When all sparks are done reset firework */
-        if(this.sparks.length <= 1) {
+        if (this.sparks.length <= 1) {
           this.reset();
         }
         break;
       }
       default: {
         this.age++;
-        this.position.y = this.canvas.getHeight() - Math.floor(this.age / this.max_age * this.canvas.getHeight());
+        this.position.y = this.canvas.getHeight() - Math.floor(this.age / this.maxAge * this.canvas.getHeight());
         /** Check if it's time to explode & generate sparks */
-        if(this.position.y < this.explode_height) {
-          this.explode_state = true;
+        if (this.position.y < this.explodeHeight) {
+          this.explodeState = true;
           this.sparks = this.generateSparks();
         }
         break;
@@ -69,7 +69,7 @@ export class Firework {
   }
 
   draw(): void {
-    switch (this.explode_state) {
+    switch (this.explodeState) {
       case true: { /** Draw sparks */
         this.sparks.forEach((spark) => {
           spark.draw();
@@ -77,7 +77,7 @@ export class Firework {
         break;
       }
       default: { /** Draw firework */
-        this.canvas.drawRect(this.position.x, this.position.y, 4,4);
+        this.canvas.drawRect(this.position.x, this.position.y, 4, 4);
         break;
       }
     }

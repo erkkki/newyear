@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {AppComponent} from './app.component';
-
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {MessageComponent} from './message/message.component';
 
 const routes: Routes = [
-  { path: ':id', component: AppComponent }
+  { path: '', component: MessageComponent },
+  { path: ':id', component: MessageComponent },
 ];
 
 @NgModule({

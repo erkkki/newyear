@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {HttpClientModule} from '@angular/common/http';
 
-import { SettingsComponent } from './settings.component';
+import {SettingsComponent} from './settings.component';
+import {Router} from '@angular/router';
+import {MockRouter} from '../mock/mock-router';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -8,7 +11,9 @@ describe('SettingsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsComponent ]
+      imports: [HttpClientModule],
+      declarations: [ SettingsComponent ],
+      providers: [{ provide: Router, useClass: MockRouter }],
     })
     .compileComponents();
   }));

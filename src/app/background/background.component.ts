@@ -1,7 +1,7 @@
-import {Component, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, ViewChild} from '@angular/core';
 
-import { Canvas } from './canvas';
-import { Background } from './background';
+import {Canvas} from './canvas';
+import {Background} from './background';
 
 
 @Component({

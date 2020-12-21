@@ -1,21 +1,27 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {RouterTestingModule} from '@angular/router/testing';
 
-import { MessageComponent } from './message.component';
-import { Message } from '../core/types/message.interface';
-import { MockMessageData } from '../core/data/mock-message.data';
+import {MessageComponent} from './message.component';
+import {Message} from '../core/types/message.interface';
+import {MockMessageData} from '../mock/mock-message.data';
 
 describe('MessageComponent', () => {
   let component: MessageComponent;
   let fixture: ComponentFixture<MessageComponent>;
-  let data: MockMessageData = new MockMessageData();
+  const data: MockMessageData = new MockMessageData();
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, FormsModule],
+      imports: [HttpClientModule, FormsModule, RouterTestingModule.withRoutes(
+        [
+          { path: '', component: MessageComponent },
+          { path: ':id', component: MessageComponent },
+        ]
+      )],
       declarations: [ MessageComponent ]
     })
     .compileComponents();
@@ -32,7 +38,7 @@ describe('MessageComponent', () => {
   });
 
   it('Should be same msg as message service.', () => {
-    let temp_msg: Message = data.messages[0];
-    expect(component.message).toEqual(temp_msg);
+    const tempMsg: Message = data.messages[0];
+    expect(component.message).toEqual(tempMsg);
   });
 });

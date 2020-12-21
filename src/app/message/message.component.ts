@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { MessageService } from '../core/services/message.service';
-import { Message } from '../core/types/message.interface';
+import {MessageService} from '../core/services/message.service';
+import {Message} from '../core/types/message.interface';
 
 @Component({
   selector: 'app-message',
@@ -10,18 +10,12 @@ import { Message } from '../core/types/message.interface';
 })
 export class MessageComponent implements OnInit {
 
+  @Input() edit: boolean;
   message: Message;
-  edit: boolean;
 
   constructor(
     private messageService: MessageService,
-  ) {
-    this.edit = false;
-    this.messageService.getEditState().subscribe(state => {
-      console.log(state);
-      this.edit = state;
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.messageService.getMessage().subscribe((data) => {
@@ -29,8 +23,8 @@ export class MessageComponent implements OnInit {
     });
   }
 
-  updateMessage(): void {
+  messageChange($event): void {
+    this.message.message = $event;
     this.messageService.setMessage(this.message);
   }
-
 }
