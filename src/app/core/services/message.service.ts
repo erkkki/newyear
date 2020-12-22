@@ -12,6 +12,11 @@ import {Message} from '../types/message.interface';
 })
 export class MessageService {
 
+  templateMessage: Message = {
+    id: 0,
+    message: 'Happy New Year!',
+    video_id: 'XqZsoesa55w',
+  };
   message: BehaviorSubject<Message>;
   serverMessage: string;
 
@@ -20,7 +25,7 @@ export class MessageService {
     private router: Router,
   ) {
     this.message = new BehaviorSubject<Message>({});
-    this.loadDefaultMessage();
+    this.setMessage(this.templateMessage);
 
     this.message.pipe(
       debounceTime(1000),
@@ -30,22 +35,19 @@ export class MessageService {
       if (JSON.stringify(this.message.value) === this.serverMessage) {
         return;
       }
+      if (JSON.stringify(this.message.value) === this.templateMessage) {
+        return;
+      }
       /** Save message. */
       this.saveMessage(message);
     });
   }
 
-  loadDefaultMessage(): void {
-    this.setMessage({
-      id: 0,
-      message: 'Happy New Year!',
-      video_id: 'XqZsoesa55w',
-    });
-  }
-
   saveMessage(message: Message): void {
     this.messageApi.create(message).subscribe((value) => {
-      this.router.navigateByUrl('/' + value.id).then();
+      if (value.id) {
+        this.router.navigateByUrl('/' + value.id).then();
+      }
     });
   }
 
@@ -53,7 +55,7 @@ export class MessageService {
   setMessageById(id): void  {
     this.messageApi.getById(id).subscribe((message) => {
       if (message instanceof Array) {
-        this.loadDefaultMessage();
+        this.setMessage(this.templateMessage);
         this.router.navigateByUrl('/' ).then();
         return;
       }
