@@ -1,4 +1,4 @@
-import {Color} from '../core/types/background.interface';
+import {Color} from '../../core/types/background.interface';
 
 export class Canvas {
 

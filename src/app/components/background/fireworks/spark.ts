@@ -1,7 +1,7 @@
 import {Canvas} from '../canvas';
 import {Firework} from './firework';
 
-import {Color} from '../../core/types/background.interface';
+import {Color} from '../../../core/types/background.interface';
 
 export class Spark {
 

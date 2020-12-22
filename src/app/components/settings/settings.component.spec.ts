@@ -3,7 +3,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {SettingsComponent} from './settings.component';
 import {Router} from '@angular/router';
-import {MockRouter} from '../mock/mock-router';
+import {MockRouter} from '../../mock/mock-router';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;

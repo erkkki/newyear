@@ -11,9 +11,9 @@ import {MatIconModule} from '@angular/material/icon';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {MessageComponent} from './message/message.component';
-import {BackgroundComponent} from './background/background.component';
-import {SettingsComponent} from './settings/settings.component';
+import {MessageComponent} from './components/message/message.component';
+import {BackgroundComponent} from './components/background/background.component';
+import {SettingsComponent} from './components/settings/settings.component';
 import {AutofocusDirective} from './core/directives/autofocus.directive';
 
 

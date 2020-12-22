@@ -5,8 +5,8 @@ import {FormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
 
 import {MessageComponent} from './message.component';
-import {Message} from '../core/types/message.interface';
-import {MockMessageData} from '../mock/mock-message.data';
+import {Message} from '../../core/types/message.interface';
+import {MockMessageData} from '../../mock/mock-message.data';
 
 describe('MessageComponent', () => {
   let component: MessageComponent;

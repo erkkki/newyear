@@ -3,8 +3,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {Router} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {BackgroundComponent} from './background/background.component';
-import {MessageComponent} from './message/message.component';
+import {BackgroundComponent} from './components/background/background.component';
+import {MessageComponent} from './components/message/message.component';
 import {MockRouter} from './mock/mock-router';
 
 describe('AppComponent', () => {

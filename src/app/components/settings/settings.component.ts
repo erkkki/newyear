@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Message} from '../core/types/message.interface';
-import {MessageService} from '../core/services/message.service';
+import {Message} from '../../core/types/message.interface';
+import {MessageService} from '../../core/services/message.service';
 
 @Component({
   selector: 'app-settings',
