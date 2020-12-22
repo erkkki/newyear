@@ -26,10 +26,20 @@ export class MessageService {
   ) {
     this.message = new BehaviorSubject<Message>({});
     this.setMessage(this.templateMessage);
+    this.autoSave();
+  }
 
+  getMessage(): Observable<Message> {
+    return this.message.asObservable();
+  }
+  setMessage(message: Message): void {
+    this.message.next(message);
+  }
+
+  autoSave(): void {
     this.message.pipe(
       debounceTime(1000),
-      skip(1)
+      skip(1),
     ).subscribe((message) => {
       /** Check if all ready saved in server from last result */
       if (JSON.stringify(this.message.value) === this.serverMessage) {
@@ -44,7 +54,7 @@ export class MessageService {
   }
 
   saveMessage(message: Message): void {
-    this.messageApi.create(message).subscribe((value) => {
+    this.messageApi.post(message).subscribe((value) => {
       if (value.id) {
         this.router.navigateByUrl('/' + value.id).then();
       }
@@ -53,7 +63,7 @@ export class MessageService {
 
   /** Update message by given id */
   setMessageById(id): void  {
-    this.messageApi.getById(id).subscribe((message) => {
+    this.messageApi.get(id).subscribe((message) => {
       if (message instanceof Array) {
         this.setMessage(this.templateMessage);
         this.router.navigateByUrl('/' ).then();
@@ -69,10 +79,5 @@ export class MessageService {
     });
   }
 
-  getMessage(): Observable<Message> {
-    return this.message.asObservable();
-  }
-  setMessage(message: Message): void {
-    this.message.next(message);
-  }
+
 }
