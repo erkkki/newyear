@@ -19,9 +19,9 @@ export class MessageApiService {
     return  throwError(error.error);
   }
 
-  get(id): Observable<any> {
+  get(uuid): Observable<any> {
     return this.http.get(
-      environment.messageApi + '/' + id
+      environment.messageApi + '/' + uuid
     ).pipe(catchError(this.formatErrors));
   }
 

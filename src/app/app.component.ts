@@ -19,16 +19,16 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.editState = false;
-    /** Check if id exist and send id to message service */
+    /** Check if uuid exist and send id to message service */
     this.route.events
       .pipe(
         filter(e => (e instanceof ActivationEnd) && (Object.keys(e.snapshot.params).length > 0)),
         map(e => e instanceof ActivationEnd ? e.snapshot.params : {})
       )
       .subscribe(params => {
-        if (params.id) {
-          console.log(params.id);
-          this.messageService.setMessageById(params.id);
+        if (params.uuid) {
+          console.log(params.uuid);
+          this.messageService.setMessageById(params.uuid);
         }
       });
   }

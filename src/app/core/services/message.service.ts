@@ -14,6 +14,7 @@ export class MessageService {
 
   templateMessage: Message = {
     id: 0,
+    uuid: '',
     message: 'Happy New Year!',
     video_id: 'XqZsoesa55w',
   };
@@ -24,8 +25,7 @@ export class MessageService {
     private messageApi: MessageApiService,
     private router: Router,
   ) {
-    this.message = new BehaviorSubject<Message>({});
-    this.setMessage(this.templateMessage);
+    this.message = new BehaviorSubject<Message>(this.templateMessage);
     this.autoSave();
   }
 
@@ -45,9 +45,9 @@ export class MessageService {
       if (JSON.stringify(this.message.value) === this.serverMessage) {
         return;
       }
-      if (JSON.stringify(this.message.value) === this.templateMessage) {
-        return;
-      }
+      // if (JSON.stringify(this.message.value) === this.templateMessage) {
+      //   return;
+      // }
       /** Save message. */
       this.saveMessage(message);
     });
@@ -56,14 +56,14 @@ export class MessageService {
   saveMessage(message: Message): void {
     this.messageApi.post(message).subscribe((value) => {
       if (value.id) {
-        this.router.navigateByUrl('/' + value.id).then();
+        this.router.navigateByUrl('/' + value.uuid).then();
       }
     });
   }
 
   /** Update message by given id */
-  setMessageById(id): void  {
-    this.messageApi.get(id).subscribe((message) => {
+  setMessageById(uuid): void  {
+    this.messageApi.get(uuid).subscribe((message) => {
       if (message instanceof Array) {
         this.setMessage(this.templateMessage);
         this.router.navigateByUrl('/' ).then();
@@ -74,7 +74,7 @@ export class MessageService {
         this.message.next(message);
         this.serverMessage = JSON.stringify(message);
       } else {
-        console.error('No message found by id: ' + id + '.');
+        console.error('No message found by uuid: ' + uuid + '.');
       }
     });
   }

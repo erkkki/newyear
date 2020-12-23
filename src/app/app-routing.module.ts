@@ -4,7 +4,7 @@ import {MessageComponent} from './components/message/message.component';
 
 const routes: Routes = [
   { path: '', component: MessageComponent },
-  { path: ':id', component: MessageComponent },
+  { path: ':uuid', component: MessageComponent },
 ];
 
 @NgModule({
