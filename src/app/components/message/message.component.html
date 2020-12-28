@@ -4,7 +4,7 @@
             appAutofocus
             maxlength="120"
             cdkTextareaAutosize
-            [ngModel]="message.message"
-            (ngModelChange)="messageChange($event)"></textarea>
+            [(ngModel)]="message.message"
+            (ngModelChange)="updateMessage($event)"></textarea>
 </div>
 

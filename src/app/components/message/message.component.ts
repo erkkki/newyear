@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
-import {MessageService} from '../../core/services/message.service';
 import {Message} from '../../core/types/message.interface';
 
 @Component({
@@ -11,20 +10,14 @@ import {Message} from '../../core/types/message.interface';
 export class MessageComponent implements OnInit {
 
   @Input() edit: boolean;
-  message: Message;
+  @Input() message: Message;
+  @Output() newMessage: EventEmitter<Message> = new EventEmitter<Message>();
 
-  constructor(
-    private messageService: MessageService,
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.messageService.getMessage().subscribe((data) => {
-      this.message = data;
-    });
-  }
+  ngOnInit(): void {}
 
-  messageChange($event): void {
-    this.message.message = $event;
-    this.messageService.setMessage(this.message);
+  updateMessage($event): void {
+    this.newMessage.emit(this.message);
   }
 }

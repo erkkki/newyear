@@ -35,6 +35,9 @@ export class Canvas {
   }
 
   drawRect(x: number, y: number, w: number, h: number, color: Color = this.color): void {
+    /** TODO https://stackoverflow.com/questions/22559603/html5-canvas-fillrect-vs-rect
+     * Try make it faster.
+     */
     this.context.beginPath();
     this.context.fillStyle = 'rgba(' + color.red + ',' + color.green + ',' + color.blue + ',' + color.alpha + ')';
     this.context.rect(x, y, w, h);

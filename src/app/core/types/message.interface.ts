@@ -1,6 +1,6 @@
 export interface Message {
   id?: number;
   uuid: string;
-  video_id?: string;
+  videoId?: string;
   message?: string;
 }

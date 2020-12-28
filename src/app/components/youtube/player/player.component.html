@@ -1,0 +1,7 @@
+<div *ngIf="show">
+  <youtube-player
+    [videoId]="videoId"
+    [playerVars]="playerVars"
+    (ready)="playerReady($event)">
+  </youtube-player>
+</div>

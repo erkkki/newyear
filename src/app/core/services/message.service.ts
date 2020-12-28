@@ -16,7 +16,7 @@ export class MessageService {
     id: 0,
     uuid: '',
     message: 'Happy New Year!',
-    video_id: 'XqZsoesa55w',
+    videoId: 'XqZsoesa55w',
   };
   message: BehaviorSubject<Message>;
   serverMessage: string;
@@ -32,6 +32,7 @@ export class MessageService {
   getMessage(): Observable<Message> {
     return this.message.asObservable();
   }
+
   setMessage(message: Message): void {
     this.message.next(message);
   }
@@ -45,21 +46,16 @@ export class MessageService {
       if (JSON.stringify(this.message.value) === this.serverMessage) {
         return;
       }
-      // if (JSON.stringify(this.message.value) === this.templateMessage) {
-      //   return;
-      // }
+
       /** Save message. */
-      this.saveMessage(message);
+      this.messageApi.post(message).subscribe((value) => {
+        if (value.id) {
+          this.router.navigateByUrl('/' + value.uuid).then();
+        }
+      });
     });
   }
 
-  saveMessage(message: Message): void {
-    this.messageApi.post(message).subscribe((value) => {
-      if (value.id) {
-        this.router.navigateByUrl('/' + value.uuid).then();
-      }
-    });
-  }
 
   /** Update message by given id */
   setMessageById(uuid): void  {

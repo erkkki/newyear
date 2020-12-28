@@ -8,13 +8,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MessageComponent} from './components/message/message.component';
 import {BackgroundComponent} from './components/background/background.component';
-import {SettingsComponent} from './components/settings/settings.component';
 import {AutofocusDirective} from './core/directives/autofocus.directive';
+import { PlayerComponent } from './components/youtube/player/player.component';
+import { SelectAudioComponent } from './components/select-audio/select-audio.component';
+import { SearchInputComponent } from './components/youtube/search-input/search-input.component';
+import { TableComponent } from './components/youtube/table/table.component';
+
 
 
 @NgModule({
@@ -22,8 +29,11 @@ import {AutofocusDirective} from './core/directives/autofocus.directive';
     AppComponent,
     MessageComponent,
     BackgroundComponent,
-    SettingsComponent,
     AutofocusDirective,
+    PlayerComponent,
+    SelectAudioComponent,
+    SearchInputComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +46,9 @@ import {AutofocusDirective} from './core/directives/autofocus.directive';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
+    MatDividerModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

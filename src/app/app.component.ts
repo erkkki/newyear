@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivationEnd, Router} from '@angular/router';
 import {MessageService} from './core/services/message.service';
 import {filter, map} from 'rxjs/operators';
+import { Message } from './core/types/message.interface';
+import {YoutubeVideo} from './core/types/youtubeVideo';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,9 @@ import {filter, map} from 'rxjs/operators';
 })
 export class AppComponent implements OnInit{
   title = 'front-end';
-  editState: boolean;
+  editMessageState: boolean;
+  selectAudioState: boolean;
+  message: Message;
 
   constructor(
     private route: Router,
@@ -18,7 +22,8 @@ export class AppComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.editState = false;
+    this.editMessageState = false;
+    this.selectAudioState = false;
     /** Check if uuid exist and send id to message service */
     this.route.events
       .pipe(
@@ -27,9 +32,21 @@ export class AppComponent implements OnInit{
       )
       .subscribe(params => {
         if (params.uuid) {
-          console.log(params.uuid);
           this.messageService.setMessageById(params.uuid);
         }
       });
+
+    this.messageService.getMessage().subscribe((message) => {
+      this.message = message;
+    });
+  }
+
+  updateMessage(message: Message): void {
+    this.messageService.setMessage(message);
+  }
+
+  updateVideo(video: YoutubeVideo): void {
+    this.message.videoId = video.videoId;
+    this.updateMessage(this.message);
   }
 }

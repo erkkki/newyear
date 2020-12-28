@@ -26,7 +26,7 @@ describe('MessageApiService', () => {
       const tempMsg: Message = data.messages[0];
       service.get(0).subscribe(value => {
         expect(value.message).toBe(tempMsg.message);
-        expect(value.video_id).toBe(tempMsg.video_id);
+        expect(value.videoId).toBe(tempMsg.videoId);
         done();
       });
   });
@@ -36,7 +36,7 @@ describe('MessageApiService', () => {
       const tempMsg: Message = data.messages[0];
       service.post(tempMsg).subscribe(value => {
         expect(value.message).toBe(tempMsg.message);
-        expect(value.video_id).toBe(tempMsg.video_id);
+        expect(value.videoId).toBe(tempMsg.videoId);
         done();
       });
     });

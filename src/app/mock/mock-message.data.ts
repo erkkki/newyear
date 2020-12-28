@@ -2,8 +2,8 @@ import {Message} from '../core/types/message.interface';
 
 export class MockMessageData {
   public messages: Message[] = [
-    { id: 0, message: 'Happy New Year!', video_id: 'XqZsoesa55w'},
-    { id: 1, message: 'Happy New Year! second', video_id: 'XqZsoesa55w'},
-    { id: 2, message: 'Happy New Year! second 🤣', video_id: 'XqZsoesa55w'},
+    { id: 0, uuid: '', message: 'Happy New Year!', videoId: 'XqZsoesa55w'},
+    { id: 1, uuid: '', message: 'Happy New Year! second', videoId: 'XqZsoesa55w'},
+    { id: 2, uuid: '', message: 'Happy New Year! second 🤣', videoId: 'XqZsoesa55w'},
   ];
 }

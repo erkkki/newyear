@@ -4,6 +4,11 @@
 
 export const environment = {
   production: false,
+  origin: 'http://localhost:4200',
   messageApi: 'http://localhost/projects/new_year/back-end/public/api/message',
+  youtubeApi: {
+    url: 'https://www.googleapis.com/youtube/v3/search',
+    apiKey: 'AIzaSyChWW0PNW1fB0hfExTInV7OEBuqV1qrHr4',
+  },
 };
 
