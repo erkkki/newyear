@@ -4,6 +4,7 @@ import {MessageService} from './core/services/message.service';
 import {filter, map} from 'rxjs/operators';
 import { Message } from './core/types/message.interface';
 import {YoutubeVideo} from './core/types/youtubeVideo';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +12,23 @@ import {YoutubeVideo} from './core/types/youtubeVideo';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'front-end';
   editMessageState: boolean;
   selectAudioState: boolean;
+  shareState: boolean;
   message: Message;
+  environment: any;
 
   constructor(
     private route: Router,
     public messageService: MessageService,
-  ) {}
+  ) {
+    this.environment = environment;
+  }
 
   ngOnInit(): void {
     this.editMessageState = false;
     this.selectAudioState = false;
+    this.shareState = false;
     /** Check if uuid exist and send id to message service */
     this.route.events
       .pipe(
@@ -48,5 +53,9 @@ export class AppComponent implements OnInit{
   updateVideo(video: YoutubeVideo): void {
     this.message.videoId = video.videoId;
     this.updateMessage(this.message);
+  }
+
+  url(): string {
+    return this.message.uuid;
   }
 }
