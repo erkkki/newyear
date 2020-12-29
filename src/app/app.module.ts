@@ -18,9 +18,6 @@ import {MessageComponent} from './components/message/message.component';
 import {BackgroundComponent} from './components/background/background.component';
 import {AutofocusDirective} from './core/directives/autofocus.directive';
 import { PlayerComponent } from './components/youtube/player/player.component';
-import { SelectAudioComponent } from './components/select-audio/select-audio.component';
-import { SearchInputComponent } from './components/youtube/search-input/search-input.component';
-import { TableComponent } from './components/youtube/table/table.component';
 
 
 
@@ -31,9 +28,6 @@ import { TableComponent } from './components/youtube/table/table.component';
     BackgroundComponent,
     AutofocusDirective,
     PlayerComponent,
-    SelectAudioComponent,
-    SearchInputComponent,
-    TableComponent,
   ],
   imports: [
     BrowserModule,
