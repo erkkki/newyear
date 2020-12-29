@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  messageApi: 'http://erkheikki.fi/api/message',
-  origin: 'http://erkheikki.fi'
+  messageApi: 'https://erkheikki.fi/api/message',
+  origin: 'https://newyear.erkheikki.fi'
 };
