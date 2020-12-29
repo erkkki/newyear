@@ -4,7 +4,7 @@ import {Firework} from './fireworks/firework';
 export class Background {
 
   private fireworks: Firework[] = [];
-  updateIntervalMs = 4;
+  updateIntervalMs = 10;
   fireworkCount = 40;
 
   constructor(private canvas: Canvas) {
@@ -27,10 +27,12 @@ export class Background {
   }
 
   update(): void {
+
     /** Update all fireworks */
     this.fireworks.forEach((firework) => {
       firework.update();
     });
+
     setTimeout(() => this.update(), this.updateIntervalMs);
   }
 

@@ -5,19 +5,23 @@ export class Firework {
 
   position: { x: number, y: number} = { x: 100, y: 100};
   age = 0;
-  maxAge = 480;
+  delayAge = 0;
+  maxAge = 2000; // ms
   explodeState = false;
   explodeHeight = 0;
   sparks: Spark[] = [];
   sparkCount = 40;
+  createTime: number;
 
   constructor(private canvas: Canvas) {
     this.reset();
     /** Random starting age so they won't start at same time */
-    this.age -= Math.floor(Math.random() * 200);
+    this.age -= Math.floor(Math.random() * this.maxAge);
+    this.delayAge = Math.floor(Math.random() * -1000);
   }
 
   reset(): void {
+    this.createTime = Date.now();
     this.position.y = this.canvas.getHeight();
     this.position.x = Math.floor(Math.random() * this.canvas.getWidth());
     this.age = 0;
@@ -56,7 +60,12 @@ export class Firework {
         break;
       }
       default: {
-        this.age++;
+        const time = Date.now();
+        this.age = time - this.createTime + this.delayAge;
+
+        if (this.age < 0) {
+          break;
+        }
         this.position.y = this.canvas.getHeight() - Math.floor(this.age / this.maxAge * this.canvas.getHeight());
         /** Check if it's time to explode & generate sparks */
         if (this.position.y < this.explodeHeight) {
