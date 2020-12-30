@@ -1,6 +1,10 @@
 <div class="message">
-  <h1 *ngIf="!edit">{{message.message}}</h1>
+  <h1 *ngIf="!edit"
+      [ngStyle]="{'color': message.color}">
+    {{message.message}}
+  </h1>
   <textarea *ngIf="edit"
+            [ngStyle]="{'color': message.color}"
             appAutofocus
             maxlength="120"
             cdkTextareaAutosize

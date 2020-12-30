@@ -25,6 +25,11 @@ app-youtube-player {
   background-color: white;
 }
 
+app-color-picker {
+  position: absolute;
+  left: 20px;
+}
+
 app-message {
   overflow: hidden;
   position: absolute;

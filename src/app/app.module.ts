@@ -15,12 +15,15 @@ import {MatTableModule} from '@angular/material/table';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
+import { ColorHueModule } from 'ngx-color/hue';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MessageComponent} from './components/message/message.component';
 import {BackgroundComponent} from './components/background/background.component';
 import {AutofocusDirective} from './core/directives/autofocus.directive';
 import { PlayerComponent } from './components/youtube/player/player.component';
+import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 
 
 
@@ -31,6 +34,7 @@ import { PlayerComponent } from './components/youtube/player/player.component';
     BackgroundComponent,
     AutofocusDirective,
     PlayerComponent,
+    ColorPickerComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,7 @@ import { PlayerComponent } from './components/youtube/player/player.component';
     MatTableModule,
     ShareButtonsModule,
     ShareIconsModule,
+    ColorHueModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
