@@ -26,6 +26,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "ngx-color": "^6.2.0",
     "ngx-sharebuttons": "^8.0.5",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

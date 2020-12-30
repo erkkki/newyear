@@ -17,6 +17,7 @@ export class MessageService {
     uuid: '',
     message: 'Happy New Year!',
     videoId: 'XqZsoesa55w',
+    color: '#ffffff',
   };
   message: BehaviorSubject<Message>;
   serverMessage: string;

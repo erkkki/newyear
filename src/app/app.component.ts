@@ -15,6 +15,7 @@ export class AppComponent implements OnInit{
   editMessageState: boolean;
   selectAudioState: boolean;
   shareState: boolean;
+  colorState: boolean;
   message: Message;
   environment: any;
 
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit{
     this.editMessageState = false;
     this.selectAudioState = false;
     this.shareState = false;
+    this.colorState = false;
     /** Check if uuid exist and send id to message service */
     this.route.events
       .pipe(
@@ -48,6 +50,12 @@ export class AppComponent implements OnInit{
 
   updateMessage(message: Message): void {
     this.messageService.setMessage(message);
+  }
+
+  updateColor(color: string): void {
+    const message = this.message;
+    message.color = color;
+    this.updateMessage(message);
   }
 
   updateVideo(video: YoutubeVideo): void {
