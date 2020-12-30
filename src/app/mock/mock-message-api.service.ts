@@ -15,7 +15,7 @@ export class MockMessageApiService {
     this.tempMsg = this.data.messages[0];
   }
 
-  getById(id): Observable<any> {
+  getByUuid(uuid): Observable<any> {
     return of(this.tempMsg);
   }
   create(message): Observable<any> {

@@ -13,7 +13,6 @@ import {Message} from '../types/message.interface';
 export class MessageService {
 
   templateMessage: Message = {
-    id: 0,
     uuid: '',
     message: 'Happy New Year!',
     videoId: 'XqZsoesa55w',
@@ -47,10 +46,9 @@ export class MessageService {
       if (JSON.stringify(this.message.value) === this.serverMessage) {
         return;
       }
-
       /** Save message. */
       this.messageApi.post(message).subscribe((value) => {
-        if (value.id) {
+        if (value.uuid) {
           this.router.navigateByUrl('/' + value.uuid).then();
         }
       });
