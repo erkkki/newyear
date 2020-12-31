@@ -21,16 +21,6 @@ describe('MessageApiService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('#get should return real value from api',
-    (done: DoneFn) => {
-      const tempMsg: Message = data.messages[0];
-      service.get(0).subscribe(value => {
-        expect(value.message).toBe(tempMsg.message);
-        expect(value.videoId).toBe(tempMsg.videoId);
-        done();
-      });
-  });
-
   it('#post should return same value from api',
     (done: DoneFn) => {
       const tempMsg: Message = data.messages[0];

@@ -31,7 +31,7 @@
   <div id="color">
     <button mat-fab color="{{colorState? 'warn': 'primary'}}" (click)="colorState = !colorState" aria-label="edit message"><mat-icon [ngStyle]="{'color': message.color}">format_color_text</mat-icon></button>
     <div *ngIf="colorState">
-      <app-color-picker [(value)]="message.color" (valueChange)="updateColor($event)"></app-color-picker>
+      <app-color-picker [value]="message.color? message.color: '#ffffff'" (valueChange)="updateColor($event)"></app-color-picker>
     </div>
   </div>
 </div>

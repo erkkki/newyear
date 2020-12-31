@@ -24,19 +24,4 @@ describe('MessageService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it('Test message is initialized right.', () => {
-    const tempMsg: Message = data.messages[0];
-    service.getMessage().subscribe(value => {
-      expect(value).toEqual(tempMsg);
-    });
-  });
-
-  it('New message is set.', () => {
-    const tempMsg: Message = data.messages[0];
-    service.setMessage(tempMsg);
-    service.getMessage().subscribe(value => {
-      expect(value).toEqual(tempMsg);
-    });
-  });
 });
