@@ -6,11 +6,16 @@
 
 
 <app-background></app-background>
+<app-about *ngIf="aboutState" (closeAbout)="aboutState = !aboutState"></app-about>
 <app-message [edit]="editMessageState" [message]="message" (newMessage)="updateMessage($event)"></app-message>
-<!--<app-youtube-player [show]="false" [videoId]="message.videoId"></app-youtube-player>-->
-
 
 <div class="settings">
+  <div id="about">
+    <button mat-fab color="{{aboutState? 'warn': 'primary'}}"
+            (click)="aboutState = !aboutState"
+            aria-label="edit message">About
+    </button>
+  </div>
   <div id="share">
     <div class="shade-button-container" *ngIf="shareState">
       <share-buttons
@@ -21,15 +26,26 @@
                      [url]="environment.origin+ '/' + message.uuid"
       ></share-buttons>
     </div>
-
-    <button mat-fab color="{{shareState? 'warn': 'primary'}}" (click)="shareState = !shareState" aria-label="edit message"><mat-icon>share</mat-icon></button>
+    <button mat-fab color="{{shareState? 'warn': 'primary'}}"
+            (click)="shareState = !shareState"
+            aria-label="edit message">
+      <mat-icon>share</mat-icon>
+    </button>
   </div>
   <div id="edit">
-    <button mat-fab color="{{editMessageState? 'warn': 'primary'}}" (click)="editMessageState = !editMessageState" aria-label="edit message"><mat-icon>create</mat-icon></button>
+    <button mat-fab color="{{editMessageState? 'warn': 'primary'}}"
+            (click)="editMessageState = !editMessageState"
+            aria-label="edit message">
+      <mat-icon>create</mat-icon>
+    </button>
   </div>
 
   <div id="color">
-    <button mat-fab color="{{colorState? 'warn': 'primary'}}" (click)="colorState = !colorState" aria-label="edit message"><mat-icon [ngStyle]="{'color': message.color}">format_color_text</mat-icon></button>
+    <button mat-fab color="{{colorState? 'warn': 'primary'}}"
+            (click)="colorState = !colorState"
+            aria-label="edit message">
+      <mat-icon [ngStyle]="{'color': message.color}">format_color_text</mat-icon>
+    </button>
     <div *ngIf="colorState">
       <app-color-picker [value]="message.color? message.color: '#ffffff'" (valueChange)="updateColor($event)"></app-color-picker>
     </div>

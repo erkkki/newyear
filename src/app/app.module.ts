@@ -24,6 +24,7 @@ import {BackgroundComponent} from './components/background/background.component'
 import {AutofocusDirective} from './core/directives/autofocus.directive';
 import { PlayerComponent } from './components/youtube/player/player.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 
@@ -35,6 +36,7 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     AutofocusDirective,
     PlayerComponent,
     ColorPickerComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

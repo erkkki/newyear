@@ -39,7 +39,7 @@ export class MessageService {
 
   autoSave(): void {
     this.message.pipe(
-      debounceTime(1000),
+      debounceTime(2000),
       skip(1),
     ).subscribe((message) => {
       /** Check if all ready saved in server from last result */

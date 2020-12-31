@@ -1,0 +1,27 @@
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  margin-top: 16%; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-content {
+  margin: auto;
+  padding: 20px;
+  /*border: 1px solid #888;*/
+  width: 80%;
+}
+@media only screen and (min-width: 768px) {
+  .modal-content {
+    width: 50%;
+  }
+}
+
+.container {
+  padding-top: 40px;
+  padding-right: 30px;
+}

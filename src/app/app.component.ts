@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
   selectAudioState: boolean;
   shareState: boolean;
   colorState: boolean;
+  aboutState: boolean;
   message: Message;
   environment: any;
 
@@ -31,6 +32,8 @@ export class AppComponent implements OnInit{
     this.selectAudioState = false;
     this.shareState = false;
     this.colorState = false;
+    this.aboutState = false;
+
     /** Check if uuid exist and send id to message service */
     this.route.events
       .pipe(
