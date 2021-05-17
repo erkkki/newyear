@@ -19,7 +19,7 @@ describe('MessageComponent', () => {
       imports: [HttpClientModule, FormsModule, RouterTestingModule.withRoutes(
         [
           { path: '', component: MessageComponent },
-          { path: ':uuid', component: MessageComponent },
+          { path: ':id', component: MessageComponent },
         ]
       )],
       declarations: [ MessageComponent ]

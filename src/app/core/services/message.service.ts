@@ -13,9 +13,8 @@ import {Message} from '../types/message.interface';
 export class MessageService {
 
   templateMessage: Message = {
-    uuid: '',
+    id: '',
     message: 'Happy New Year!',
-    videoId: 'XqZsoesa55w',
     color: '#ffffff',
   };
   message: BehaviorSubject<Message>;
@@ -48,8 +47,8 @@ export class MessageService {
       }
       /** Save message. */
       this.messageApi.post(message).subscribe((value) => {
-        if (value.uuid) {
-          this.router.navigateByUrl('/' + value.uuid).then();
+        if (value.id) {
+          this.router.navigateByUrl('/' + value.id).then();
         }
       });
     });
@@ -57,8 +56,8 @@ export class MessageService {
 
 
   /** Update message by given id */
-  setMessageById(uuid): void  {
-    this.messageApi.get(uuid).subscribe((message) => {
+  setMessageById(id): void  {
+    this.messageApi.get(id).subscribe((message) => {
       if (message instanceof Array) {
         this.setMessage(this.templateMessage);
         this.router.navigateByUrl('/' ).then();
@@ -69,7 +68,7 @@ export class MessageService {
         this.message.next(message);
         this.serverMessage = JSON.stringify(message);
       } else {
-        console.error('No message found by uuid: ' + uuid + '.');
+        console.error('No message found by id: ' + id + '.');
       }
     });
   }

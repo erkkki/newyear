@@ -3,7 +3,6 @@ import {ActivationEnd, Router} from '@angular/router';
 import {MessageService} from './core/services/message.service';
 import {filter, map} from 'rxjs/operators';
 import { Message } from './core/types/message.interface';
-import {YoutubeVideo} from './core/types/youtubeVideo';
 import { environment } from './../environments/environment';
 
 @Component({
@@ -41,8 +40,8 @@ export class AppComponent implements OnInit{
         map(e => e instanceof ActivationEnd ? e.snapshot.params : {})
       )
       .subscribe(params => {
-        if (params.uuid) {
-          this.messageService.setMessageById(params.uuid);
+        if (params.id) {
+          this.messageService.setMessageById(params.id);
         }
       });
 
@@ -61,12 +60,8 @@ export class AppComponent implements OnInit{
     this.updateMessage(message);
   }
 
-  updateVideo(video: YoutubeVideo): void {
-    this.message.videoId = video.videoId;
-    this.updateMessage(this.message);
-  }
 
   url(): string {
-    return this.message.uuid;
+    return this.message.id;
   }
 }

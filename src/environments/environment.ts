@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   origin: 'http://localhost:4200',
-  messageApi: 'http://localhost/projects/new_year/back-end/public/api/message',
+  messageApi: 'http://localhost:8000/api/messages',
+  // messageApi: 'http://localhost/projects/new_year/back-end/public/api/message',
 };
 

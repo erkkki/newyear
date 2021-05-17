@@ -19,16 +19,17 @@ export class MessageApiService {
     return  throwError(error.error);
   }
 
-  get(uuid): Observable<any> {
+  get(id): Observable<any> {
     return this.http.get(
-      environment.messageApi + '/' + uuid
+      environment.messageApi + '/' + id + '.json'
     ).pipe(catchError(this.formatErrors));
   }
 
-  post(message): Observable<any> {
+  post(newMessage): Observable<any> {
+    let {message, color} = newMessage;
     return this.http.post<Message>(
       environment.messageApi,
-      message
+      {message, color}
     ).pipe(catchError(this.formatErrors));
   }
 }

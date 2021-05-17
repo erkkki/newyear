@@ -1,6 +1,5 @@
 export interface Message {
-  uuid: string;
-  videoId?: string;
+  id: string;
   message?: string;
   color?: string;
 }
